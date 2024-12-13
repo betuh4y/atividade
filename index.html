@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de História - Escravidão</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .quiz-container {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .quiz-container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      .question p {
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .options {
+        list-style: none;
+        padding: 0;
+      }
+
+      .options li {
+        margin: 10px 0;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <div class="quiz-container">
+      <h1>Quiz: História da Escravidão</h1>
+      <div class="question">
+        <p>1. Em que ano a Lei Áurea foi assinada, abolindo a escravidão no Brasil?</p>
+        <ul class="options">
+          <li><input type="radio" name="q1" value="1888"> 1888</li>
+          <li><input type="radio" name="q1" value="1871"> 1871</li>
+          <li><input type="radio" name="q1" value="1822"> 1822</li>
+          <li><input type="radio" name="q1" value="1884"> 1884</li>
+        </ul>
+      </div>
+
+      <div class="question">
+        <p>2. Qual foi a principal justificativa econômica para a escravidão no Brasil colonial?</p>
+        <ul class="options">
+          <li><input type="radio" name="q2" value="Plantação de açúcar"> Plantação de açúcar</li>
+          <li><input type="radio" name="q2" value="Produção de café"> Produção de café</li>
+          <li><input type="radio" name="q2" value="Extração de ouro"> Extração de ouro</li>
+          <li><input type="radio" name="q2" value="Indústria"> Indústria</li>
+        </ul>
+      </div>
+
+      <div class="question">
+        <p>3. Qual população foi majoritariamente escravizada no Brasil?</p>
+        <ul class="options">
+          <li><input type="radio" name="q3" value="Africanos"> Africanos</li>
+          <li><input type="radio" name="q3" value="Indígenas"> Indígenas</li>
+          <li><input type="radio" name="q3" value="Europeus pobres"> Europeus pobres</li>
+          <li><input type="radio" name="q3" value="Asiáticos"> Asiáticos</li>
+        </ul>
+      </div>
+
+      <button onclick="submitQuiz()">Enviar Respostas</button>
+      <div id="result" style="margin-top: 20px; text-align: center;"></div>
+    </div>
+
+    <script>
+      function submitQuiz() {
+        const answers = {
+          q1: '1888',
+          q2: 'Plantação de açúcar',
+          q3: 'Africanos'
+        };
+
+        let score = 0;
+        const totalQuestions = Object.keys(answers).length;
+
+        for (const [key, value] of Object.entries(answers)) {
+          const selected = document.querySelector(`input[name="${key}"]:checked`);
+          if (selected && selected.value === value) {
+            score++;
+          }
+        }
+
+        const result = document.getElementById('result');
+        result.textContent = `Você acertou ${score} de ${totalQuestions} questões!`;
+      }
+    </script>
+
+
+  </body>
+
+</html>
